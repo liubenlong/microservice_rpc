@@ -257,9 +257,9 @@
                 <dubbo.registry.address.short>127.0.0.1:2181</dubbo.registry.address.short>
                 <dubbo.registry.rest.port>8888</dubbo.registry.rest.port>
 
-                <spring.datasource.url>jdbc:mysql://10.154.252.153:3306/whatslive_media?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=UTF8</spring.datasource.url>
-                <spring.datasource.username>root</spring.datasource.username>
-                <spring.datasource.password>letv@2014</spring.datasource.password>
+                <spring.datasource.url>jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=UTF8</spring.datasource.url>
+                <spring.datasource.username>用户名</spring.datasource.username>
+                <spring.datasource.password>密码</spring.datasource.password>
 
             </properties>
         </profile>
@@ -275,10 +275,10 @@
                 <dubbo.registry.address>zookeeper://127.0.0.1:2181</dubbo.registry.address>
                 <dubbo.registry.address.short>127.0.0.1:2181</dubbo.registry.address.short>
                 <dubbo.registry.rest.port>8888</dubbo.registry.rest.port>
-
-                <spring.datasource.url>jdbc:mysql://10.154.252.153:3306/whatslive_media?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=UTF8</spring.datasource.url>
-                <spring.datasource.username>root</spring.datasource.username>
-                <spring.datasource.password>letv@2014</spring.datasource.password>
+				
+				<spring.datasource.url>jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=UTF8</spring.datasource.url>
+                <spring.datasource.username>用户名</spring.datasource.username>
+                <spring.datasource.password>密码</spring.datasource.password>
 
             </properties>
         </profile>
