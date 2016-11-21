@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "demo_service_dto.proto";
+
+package yjmyzz.grpc.study.service;
+
+option java_multiple_files = true;
+option java_outer_classname = "DemoServiceDto";
+
+service DemoService {
+    rpc Ping (yjmyzz.grpc.study.dto.PingRequest) returns (yjmyzz.grpc.study.dto.PingResponse) {}
+
+    rpc getPersonList (yjmyzz.grpc.study.dto.QueryParameter) returns (yjmyzz.grpc.study.dto.PersonList) {}
+}
+
