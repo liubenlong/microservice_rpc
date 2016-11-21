@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.le.luffi.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.le.luffi.media.model.db.User" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nickName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="icon" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="businessId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="subPlatformUserId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="appId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nationality" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="createTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, nickName, icon, businessId, subPlatformUserId, appId, sex, nationality, createTime, 
+    updateTime
+  </sql>
+
+  <select id="count" resultType="long" parameterType="com.le.luffi.media.model.db.User" >
+    select count(1) from user
+    <include refid="WHERE_CONDITION" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.le.luffi.media.model.db.User" >
+    insert into user (id, nickName, icon, 
+      businessId, subPlatformUserId, appId, 
+      sex, nationality, createTime, 
+      updateTime)
+    values (#{id,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{businessid,jdbcType=INTEGER}, #{subplatformuserid,jdbcType=VARCHAR}, #{appid,jdbcType=INTEGER},
+      #{sex,jdbcType=INTEGER}, #{nationality,jdbcType=VARCHAR},  now(),
+       now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.le.luffi.media.model.db.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="nickname != null" >
+        nickName,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="businessid != null" >
+        businessId,
+      </if>
+      <if test="subplatformuserid != null" >
+        subPlatformUserId,
+      </if>
+      <if test="appid != null" >
+        appId,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="nationality != null" >
+        nationality,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="businessid != null" >
+        #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="subplatformuserid != null" >
+        #{subplatformuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        now(),
+      </if>
+      <if test="updatetime != null" >
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.le.luffi.media.model.db.User" >
+    update user
+    <set >
+      <if test="nickname != null" >
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="businessid != null" >
+        businessId = #{businessid,jdbcType=INTEGER},
+      </if>
+      <if test="subplatformuserid != null" >
+        subPlatformUserId = #{subplatformuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null" >
+        appId = #{appid,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="nationality != null" >
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime =  now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.le.luffi.media.model.db.User" >
+    update user
+    set nickName = #{nickname,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      businessId = #{businessid,jdbcType=INTEGER},
+      subPlatformUserId = #{subplatformuserid,jdbcType=VARCHAR},
+      appId = #{appid,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      updateTime =  now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findByParam" resultMap="BaseResultMap" parameterType="com.le.luffi.media.model.db.User" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    <include refid="WHERE_CONDITION" />
+  </select>
+
+  <sql id="WHERE_CONDITION">
+    where 1 = 1
+    <if test="id != null" >
+      and  id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="nickname != null" >
+      and nickname = #{nickname,jdbcType=VARCHAR}
+    </if>
+    <if test="icon != null" >
+      and icon = #{icon,jdbcType=VARCHAR}
+    </if>
+    <if test="businessid != null" >
+      and businessid = #{businessid,jdbcType=INTEGER}
+    </if>
+    <if test="subplatformuserid != null" >
+      and subplatformuserid = #{subplatformuserid,jdbcType=VARCHAR}
+    </if>
+    <if test="appid != null" >
+      and appid = #{appid,jdbcType=INTEGER}
+    </if>
+    <if test="sex != null" >
+      and sex = #{sex,jdbcType=INTEGER}
+    </if>
+    <if test="nationality != null" >
+      and nationality = #{nationality,jdbcType=VARCHAR}
+    </if>
+    <if test="createtime != null" >
+      and  createtime = #{createtime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updatetime != null" >
+      and  updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    </if>
+  </sql>
+
+
+  <sql id="PAGINATION_SQL">
+    <if test="pageSize!=null and offset!=null">
+      <![CDATA[
+         limit #{pageSize} offset #{offset}
+      ]]>
+    </if>
+  </sql>
+</mapper>
