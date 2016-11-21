@@ -1,4 +1,12 @@
 
+# 这里使用杨俊明版的dubbox:
+http://www.cnblogs.com/yjmyzz/p/dubbo-pritimive-thrift-avro-support.html
+https://github.com/liubenlong/dubbox
+
+
+
+
+
 这里只是简单的引用配置，具体详情参见dubbo官方文档：
 
 [http://dubbo.io/User+Guide-zh.htm](http://dubbo.io/User+Guide-zh.htm)
